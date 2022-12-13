@@ -38,9 +38,11 @@ function playRound(playerSelection, computerSelection) {
 function game() {
   for (i = 1; i < 30; ++i) {
     if (playerScore === 5 && computerScore < 5) {
-      alert("Well done. You are the Winner!!!");
+      console.log("Well done. You are the Winner!!! To play again press OK");
+      window.location.reload(true);
     } else if (playerScore < 5 && computerScore === 5) {
-      alert("You lose. Better luck next time.");
+      console.log("You lose. Better luck next time. To play again press OK");
+      window.location.reload(true);
     } else {
       const playerChoice = prompt(
         "What do you choose: Rock, Paper or Scissors"
