@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap");
+
+body {
+  font-family: "Source Code Pro", monospace;
+  height: 100vh;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+.play__buttons {
+  text-align: center;
+}
+
+.play__buttons > button {
+  font-family: inherit;
+  font-size: 2rem;
+}
+
+.choice__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-top: 30px;
+  :10px ;
+}
+
+button {
+  cursor: pointer;
+}
