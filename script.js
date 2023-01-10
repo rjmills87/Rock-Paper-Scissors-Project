@@ -1,17 +1,16 @@
-//Generate Random Player Choice
+const choices = ["ROCK", "PAPER", "SCISSORS"];
+let playerChoice = "";
+
+//Initial values
+let playerScore = 0;
+let computerScore = 0;
+
+//Generate Random Computer Turn
 const getComputerChoice = (arr) => {
   const randomSelection = Math.floor(Math.random() * arr.length);
   const choice = arr[randomSelection];
   return choice;
 };
-
-//Initial values
-let playerScore = 0;
-let computerScore = 0;
-let roundCount = 0;
-
-const choices = ["ROCK", "PAPER", "SCISSORS"];
-let playerChoice = "";
 
 //Button selectors
 let rockBtn = document.querySelector(".rock-button");
@@ -20,22 +19,40 @@ let scissorsBtn = document.querySelector(".scissors-button");
 let startBtn = document.querySelector(".start-button");
 let resetBtn = document.querySelector(".reset-button");
 
-//Event handlers
-rockBtn.addEventListener("click", () => {
-  playerChoice = "ROCK";
-  playRound();
-});
+//Text output
 
-paperBtn.addEventListener("click", () => {
-  playerChoice = "PAPER";
-  playRound();
-});
+const gameText = document.querySelector("#game__text");
+const gameScores = document.querySelector("#game__scores");
+const gameScorePlayer = document.querySelector(".player-score");
+const gameScoreComputer = document.querySelector(".computer-score");
 
-scissorsBtn.addEventListener("click", () => {
-  playerChoice = "SCISSORS";
-  playRound();
-});
+//Update Scores
+const updatePlayerScore = document.createElement("h2");
+updatePlayerScore.classList.add("updatePlayerScore");
+updatePlayerScore.textContent = `${playerScore}`;
 
+const updateComputerScore = document.createElement("h2");
+updateComputerScore.classList.add("updateComputerScore");
+updateComputerScore.textContent = `${computerScore}`;
+
+//Update round text
+const playerWin = document.createElement("h3");
+playerWin.classList.add("playerWin");
+playerWin.textContent = `Well done! ${playerChoice} beats ${getComputerChoice(
+  choices
+)}.`;
+
+const computerWin = document.createElement("h3");
+computerWin.classList.add("computerWin");
+computerWin.textContent = `You lose! ${getComputerChoice(
+  choices
+)} beats ${playerChoice}.`;
+
+const roundTied = document.createElement("h3");
+roundTied.classList.add("roundTied");
+roundTied.textContent = "It's a tie.";
+
+//Game Logic
 const playRound = () => {
   let computerSelection = getComputerChoice(choices);
   let playerSelection = playerChoice;
@@ -45,28 +62,60 @@ const playRound = () => {
     (playerSelection === "SCISSORS" && computerSelection === "PAPER")
   ) {
     playerScore++;
-    roundCount++;
-    console.log(`Well done! ${playerSelection} beats ${computerSelection}.`);
+    gameText.appendChild(playerWin);
     console.log(playerScore, computerScore);
   } else if (
     (computerSelection === "ROCK" && playerSelection === "SCISSORS") ||
     (computerSelection === "PAPER" && playerSelection === "ROCK") ||
     (computerSelection === "SCISSORS" && playerSelection === "PAPER")
   ) {
-    roundCount++;
     computerScore++;
-    console.log(`You lose! ${computerSelection} beats ${playerSelection}.`);
+    gameText.appendChild(computerWin);
     console.log(playerScore, computerScore);
   } else if (playerSelection === computerSelection) {
-    console.log("It's a tie.");
+    gameText.appendChild(roundTied);
     console.log(playerScore, computerScore);
+  }
+  if (playerScore === 5) {
+    alert("You are the winner");
+  } else if (computerScore === 5) {
+    alert(" You Lose! The Computer is the winner");
   }
 };
 
+//Event handlers for player choice buttons
+let playerChoices = () => {
+  rockBtn.addEventListener("click", () => {
+    playerChoice = "ROCK";
+    playRound();
+  });
+
+  paperBtn.addEventListener("click", () => {
+    playerChoice = "PAPER";
+    playRound();
+  });
+
+  scissorsBtn.addEventListener("click", () => {
+    playerChoice = "SCISSORS";
+    playRound();
+  });
+};
+
+//Enables game to start
+const gameStart = () => {
+  playerChoices();
+};
+
+//Start Button
 startBtn.addEventListener("click", () => {
-  game();
+  gameStart();
+  console.log("The game has started lets play.");
 });
 
+//Reset Button
 resetBtn.addEventListener("click", () => {
-  roundCount = 0;
+  playerScore = 0;
+  computerScore = 0;
+
+  console.log("The game is reset");
 });
