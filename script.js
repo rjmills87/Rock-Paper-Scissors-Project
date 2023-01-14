@@ -1,16 +1,7 @@
 const choices = ["ROCK", "PAPER", "SCISSORS"];
 let playerChoice = "";
-
-//Initial values
-let playerScore = 0;
-let computerScore = 0;
-
-//Generate Random Computer Turn
-const getComputerChoice = (arr) => {
-  const randomSelection = Math.floor(Math.random() * arr.length);
-  const choice = arr[randomSelection];
-  return choice;
-};
+let playerScore;
+let computerScore;
 
 //Button selectors
 let rockBtn = document.querySelector(".rock-button");
@@ -19,21 +10,26 @@ let scissorsBtn = document.querySelector(".scissors-button");
 let startBtn = document.querySelector(".start-button");
 let resetBtn = document.querySelector(".reset-button");
 
-//Text output
-
+//Update text
 const gameText = document.querySelector("#game__text");
+const resultText = document.querySelector("result__text");
 const gameScores = document.querySelector("#game__scores");
 const gameScorePlayer = document.querySelector(".player-score");
 const gameScoreComputer = document.querySelector(".computer-score");
 
-//Update Scores
-const updatePlayerScore = document.createElement("h2");
-updatePlayerScore.classList.add("updatePlayerScore");
-updatePlayerScore.textContent = `${playerScore}`;
+init = () => {
+  playerScore = 0;
+  computerScore = 0;
+  gameScorePlayer.textContent = 0;
+  gameScoreComputer.textContent = 0;
+};
 
-const updateComputerScore = document.createElement("h2");
-updateComputerScore.classList.add("updateComputerScore");
-updateComputerScore.textContent = `${computerScore}`;
+//Generate Random Computer Turn
+const getComputerChoice = (arr) => {
+  const randomSelection = Math.floor(Math.random() * arr.length);
+  const choice = arr[randomSelection];
+  return choice;
+};
 
 //Update round text
 const playerWin = document.createElement("h3");
@@ -61,7 +57,7 @@ const playRound = () => {
     (playerSelection === "PAPER" && computerSelection === "ROCK") ||
     (playerSelection === "SCISSORS" && computerSelection === "PAPER")
   ) {
-    playerScore++;
+    gameScorePlayer.textContent = playerScore += 1;
     gameText.appendChild(playerWin);
     console.log(playerScore, computerScore);
   } else if (
@@ -69,7 +65,7 @@ const playRound = () => {
     (computerSelection === "PAPER" && playerSelection === "ROCK") ||
     (computerSelection === "SCISSORS" && playerSelection === "PAPER")
   ) {
-    computerScore++;
+    gameScoreComputer.textContent = computerScore += 1;
     gameText.appendChild(computerWin);
     console.log(playerScore, computerScore);
   } else if (playerSelection === computerSelection) {
@@ -103,6 +99,10 @@ let playerChoices = () => {
 
 //Enables game to start
 const gameStart = () => {
+  playerScore = 0;
+  computerScore = 0;
+  gameScorePlayer.textContent = 0;
+  gameScoreComputer.textContent = 0;
   playerChoices();
 };
 
@@ -114,8 +114,6 @@ startBtn.addEventListener("click", () => {
 
 //Reset Button
 resetBtn.addEventListener("click", () => {
-  playerScore = 0;
-  computerScore = 0;
-
+  init();
   console.log("The game is reset");
 });
