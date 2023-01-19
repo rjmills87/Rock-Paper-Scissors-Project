@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap");
 
 body {
+  color: #f0f0f0;
+  background-color: #3cb371;
   font-family: "Source Code Pro", monospace;
   height: 100vh;
 }
@@ -11,6 +13,19 @@ h3 {
   text-align: center;
 }
 
+.game__heading {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+.game__sub-heading {
+  font-size: 2rem;
+}
+
+#game-active_text > h3 {
+  font-size: 1.5rem;
+}
+
 .play__buttons {
   text-align: center;
 }
@@ -18,6 +33,7 @@ h3 {
 .play__buttons > button {
   font-family: inherit;
   font-size: 2rem;
+  border-radius: 10px;
 }
 
 .choice__buttons {
@@ -40,5 +56,14 @@ button {
 
 .player-score,
 .computer-score {
-  font-size: 3rem;
+  font-size: 4rem;
+}
+
+.roundText {
+  font-size: 2rem;
+}
+
+#result__text {
+  color: #ff0000;
+  font-size: 2.5rem;
 }

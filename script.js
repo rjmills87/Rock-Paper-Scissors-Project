@@ -12,7 +12,8 @@ let resetBtn = document.querySelector(".reset-button");
 
 //Update text
 const gameText = document.querySelector("#game__text");
-const resultText = document.querySelector("result__text");
+const gameActiveText = document.querySelector("#game-active_text");
+const resultText = document.querySelector("#result__text");
 const gameScores = document.querySelector("#game__scores");
 const gameScorePlayer = document.querySelector(".player-score");
 const gameScoreComputer = document.querySelector(".computer-score");
@@ -31,22 +32,23 @@ const getComputerChoice = (arr) => {
   return choice;
 };
 
+//Game start text
+const gamePlaying = document.createElement("h3");
+gamePlaying.classList.add("gamePlaying");
+gamePlaying.textContent = "The Game Has Started! Let's Play!!!";
+
 //Update round text
-const playerWin = document.createElement("h3");
-playerWin.classList.add("playerWin");
-playerWin.textContent = `Well done! ${playerChoice} beats ${getComputerChoice(
-  choices
-)}.`;
+const roundText = document.createElement("h3");
+roundText.classList.add("roundText");
 
-const computerWin = document.createElement("h3");
-computerWin.classList.add("computerWin");
-computerWin.textContent = `You lose! ${getComputerChoice(
-  choices
-)} beats ${playerChoice}.`;
+//Insert game result text
+const playerGameWin = document.createElement("h3");
+playerGameWin.classList.add("playerGameWin");
+playerGameWin.textContent = "Well done! You are the winner!!!";
 
-const roundTied = document.createElement("h3");
-roundTied.classList.add("roundTied");
-roundTied.textContent = "It's a tie.";
+const computerGameWin = document.createElement("h3");
+computerGameWin.classList.add("computerGameWin");
+computerGameWin.textContent = "You lose! The Computer is the winner!!!";
 
 //Game Logic
 const playRound = () => {
@@ -57,25 +59,27 @@ const playRound = () => {
     (playerSelection === "PAPER" && computerSelection === "ROCK") ||
     (playerSelection === "SCISSORS" && computerSelection === "PAPER")
   ) {
-    gameScorePlayer.textContent = playerScore += 1;
-    gameText.appendChild(playerWin);
-    console.log(playerScore, computerScore);
+    playerScore += 1;
+    gameScorePlayer.textContent = playerScore;
+    roundText.textContent = `Well done! ${playerChoice} beats ${computerSelection}.`;
+    gameText.appendChild(roundText);
   } else if (
     (computerSelection === "ROCK" && playerSelection === "SCISSORS") ||
     (computerSelection === "PAPER" && playerSelection === "ROCK") ||
     (computerSelection === "SCISSORS" && playerSelection === "PAPER")
   ) {
-    gameScoreComputer.textContent = computerScore += 1;
-    gameText.appendChild(computerWin);
-    console.log(playerScore, computerScore);
+    computerScore += 1;
+    gameScoreComputer.textContent = computerScore;
+    roundText.textContent = `You lose! ${computerSelection} beats ${playerChoice}.`;
+    gameText.appendChild(roundText);
   } else if (playerSelection === computerSelection) {
-    gameText.appendChild(roundTied);
-    console.log(playerScore, computerScore);
+    roundText.textContent = "It's a tie.";
+    gameText.appendChild(roundText);
   }
   if (playerScore === 5) {
-    alert("You are the winner");
+    resultText.appendChild(playerGameWin);
   } else if (computerScore === 5) {
-    alert(" You Lose! The Computer is the winner");
+    resultText.appendChild(computerGameWin);
   }
 };
 
@@ -103,6 +107,7 @@ const gameStart = () => {
   computerScore = 0;
   gameScorePlayer.textContent = 0;
   gameScoreComputer.textContent = 0;
+  gameActiveText.appendChild(gamePlaying);
   playerChoices();
 };
 
