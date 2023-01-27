@@ -24,6 +24,9 @@ init = () => {
   resultText.textContent = "";
   gameActiveText.textContent = "";
   roundText.textContent = "";
+  rockBtn.disabled = false;
+  paperBtn.disabled = false;
+  scissorsBtn.disabled = false;
   playerScore = 0;
   computerScore = 0;
 };
@@ -83,6 +86,11 @@ const playRound = () => {
     resultText.appendChild(playerGameWin);
   } else if (computerScore === 5) {
     resultText.appendChild(computerGameWin);
+  }
+  if (playerScore === 5 || computerScore === 5) {
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
   }
 };
 
