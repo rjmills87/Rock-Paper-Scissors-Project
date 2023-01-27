@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 body {
   color: #f0f0f0;
-  background-color: #3cb371;
-  font-family: "Source Code Pro", monospace;
+  background-color: #3c3c3c;
+  font-family: "Press Start 2P", cursive;
   height: 100vh;
 }
 

@@ -19,10 +19,13 @@ const gameScorePlayer = document.querySelector(".player-score");
 const gameScoreComputer = document.querySelector(".computer-score");
 
 init = () => {
-  playerScore = 0;
-  computerScore = 0;
   gameScorePlayer.textContent = 0;
   gameScoreComputer.textContent = 0;
+  resultText.textContent = "";
+  gameActiveText.textContent = "";
+  roundText.textContent = "";
+  playerScore = 0;
+  computerScore = 0;
 };
 
 //Generate Random Computer Turn
@@ -100,25 +103,21 @@ let playerChoices = () => {
     playRound();
   });
 };
+playerChoices();
 
 //Enables game to start
 const gameStart = () => {
   playerScore = 0;
   computerScore = 0;
-  gameScorePlayer.textContent = 0;
-  gameScoreComputer.textContent = 0;
   gameActiveText.appendChild(gamePlaying);
-  playerChoices();
 };
 
 //Start Button
 startBtn.addEventListener("click", () => {
   gameStart();
-  console.log("The game has started lets play.");
 });
 
 //Reset Button
 resetBtn.addEventListener("click", () => {
   init();
-  console.log("The game is reset");
 });
