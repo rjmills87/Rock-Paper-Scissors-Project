@@ -9,33 +9,32 @@
   </head>
   <body>
     <h1 class="game__heading">Rock, Paper, Scissors</h1>
-    <h2 class="game__sub-heading">Can you take on the computer to win!</h2>
+    <h2 class="game__sub-heading">Can you take on the computer and win?</h2>
     <div id="game-active_text"></div>
     <div class="play__buttons">
       <button class="start-button">Start Game</button>
       <button class="reset-button">Reset Game</button>
     </div>
     <div class="choice__buttons">
-      <button class="rock-button">
-        <i class="fa-regular fa-hand-back-fist fa-6x"></i>
-      </button>
-      <button class="paper-button">
-        <i class="fa-regular fa-hand fa-6x"></i>
-      </button>
+      <button class="rock-button">🪨<br />ROCK</button>
+      <button class="paper-button">📄<br />PAPER</button>
       <button class="scissors-button">
-        <i class="fa-regular fa-hand-scissors fa-6x"></i>
+        ✂️<br />
+        SCISSORS
       </button>
     </div>
     <div id="game__scores">
-      <h2 class="player-score">0</h2>
-      <h2 class="computer-score">0</h2>
+      <div class="player">
+        <p class="player-score">0</p>
+        <h2 class="player-tag">Player</h2>
+      </div>
+      <div class="cpu">
+        <p class="computer-score">0</p>
+        <h2 class="cpu-tag">CPU</h2>
+      </div>
     </div>
     <div id="game__text"></div>
     <div id="result__text"></div>
     <script src="script.js"></script>
-    <script
-      src="https://kit.fontawesome.com/f94ad6cfa0.js"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>

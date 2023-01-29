@@ -10,6 +10,10 @@ let scissorsBtn = document.querySelector(".scissors-button");
 let startBtn = document.querySelector(".start-button");
 let resetBtn = document.querySelector(".reset-button");
 
+rockBtn.disabled = true;
+paperBtn.disabled = true;
+scissorsBtn.disabled = true;
+
 //Update text
 const gameText = document.querySelector("#game__text");
 const gameActiveText = document.querySelector("#game-active_text");
@@ -24,9 +28,10 @@ init = () => {
   resultText.textContent = "";
   gameActiveText.textContent = "";
   roundText.textContent = "";
-  rockBtn.disabled = false;
-  paperBtn.disabled = false;
-  scissorsBtn.disabled = false;
+  rockBtn.disabled = true;
+  paperBtn.disabled = true;
+  scissorsBtn.disabled = true;
+  startBtn.disabled = false;
   playerScore = 0;
   computerScore = 0;
 };
@@ -118,6 +123,10 @@ const gameStart = () => {
   playerScore = 0;
   computerScore = 0;
   gameActiveText.appendChild(gamePlaying);
+  startBtn.disabled = true;
+  rockBtn.disabled = false;
+  paperBtn.disabled = false;
+  scissorsBtn.disabled = false;
 };
 
 //Start Button
