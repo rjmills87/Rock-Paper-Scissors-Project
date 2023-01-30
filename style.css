@@ -127,3 +127,90 @@ p {
   color: #ff2b1a;
   text-shadow: none;
 }
+
+/* Styles for mobile */
+@media screen and (max-width: 480px) and (orientation: portrait) {
+  body {
+    text-align: center;
+  }
+
+  .game__heading {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    padding: 1rem 0rem;
+  }
+
+  .game__sub-heading {
+    font-size: 1rem;
+    padding: 1rem 0rem;
+  }
+
+  #game-active_text > h3 {
+    font-size: 1rem;
+    padding: 1rem 0rem;
+  }
+
+  .play__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 2rem;
+    padding: 1rem 1rem;
+  }
+
+  .play__buttons > button,
+  .choice__buttons > button {
+    background-color: #3c3c3c;
+    -webkit-border-radius: 60px;
+    border-radius: 60px;
+    border: none;
+    color: #ffb848;
+    cursor: pointer;
+    display: inline-block;
+    font-family: inherit;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .choice__buttons > button {
+    font-size: 0.75rem;
+  }
+  .choice__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1rem 0rem;
+  }
+
+  .rock-button,
+  .paper-button,
+  .scissors-button {
+    width: 30%;
+  }
+
+  #game__scores {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .player-score,
+  .computer-score {
+    font-size: 3rem;
+    padding: 30px;
+  }
+
+  .roundText {
+    font-size: 1.25rem;
+    padding: 1rem 1rem;
+    margin-top: 2rem;
+  }
+
+  #result__text {
+    font-size: 1.5rem;
+    padding: 1rem 1rem;
+  }
+}
