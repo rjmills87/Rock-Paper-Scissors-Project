@@ -1,2 +1,3 @@
-# TOP Rock, Paper, Scissors Project
- This my first Javascript project.
+Rock, Paper, Scissors Project
+
+This my first Javascript project.
